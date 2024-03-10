@@ -1,16 +1,34 @@
-# This is a sample Python script.
+class Animal:
+    def __init__(self, animalName, jumpHeight):
+        self.jumpHeight = jumpHeight
+        self.animalName = animalName
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    def Jump(self):
+        print(f"{self.animalName} jumped {self.jumpHeight}m!")
 
+class Dog(Animal):
+    def Sound(self):
+        print(f"{self.animalName} is barking!")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+class Cat(Animal):
+    def Sound(self):
+        print(f"{self.animalName} is meowing!")
 
+if __name__ == "__main__":
+    zoo = []
+    while True:
+        animalType = input("Введите тип животного (Dog или Cat). Enter - закончить ввод:").lower()
+        if animalType == "":
+            break
+        elif animalType == "dog" or animalType == "cat":
+            animalName = input("Введите имя животного:")
+            animalJumpHeight = input("Введите высоту, на которую может прыгать животное:")
+            if animalType == "dog":
+                zoo.append(Dog(animalName, animalJumpHeight))
+            elif animalType == "cat":
+                zoo.append(Cat(animalName, animalJumpHeight))
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    for animal in zoo:
+        animal.Sound()
+        animal.Jump()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
